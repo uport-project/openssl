@@ -226,7 +226,8 @@ extern "C" {
 # endif
 
 /* Standard integer types */
-# if defined(OPENSSL_SYS_UEFI)
+# if defined(__APPLE__)
+# elif defined(OPENSSL_SYS_UEFI)
 typedef INT8 int8_t;
 typedef UINT8 uint8_t;
 typedef INT16 int16_t;
