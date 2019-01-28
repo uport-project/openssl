@@ -27,7 +27,7 @@ FOUNDATION_EXPORT const unsigned char opensslVersionString[];
 #import <openssl/bn.h>
 #import <openssl/ec.h>
 #import <openssl/obj_mac.h>
-#import <openssl/e_os2.h>
+//#import <openssl/e_os2.h>
 #import <openssl/ossl_typ.h>
 #import <openssl/crypto.h>
 #import <openssl/safestack.h>
