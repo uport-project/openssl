@@ -16,12 +16,18 @@ tar -xvzf openssl-$OPENSSL_VERSION.tar.gz
 cd "openssl-${OPENSSL_VERSION}"
 ./Configure BSD-generic32 &> "../openssl-${OPENSSL_VERSION}-${ARCH}.log"
 perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' crypto/ui/ui_openssl.c
+
+perl util/ck_errf.pl -strict */*.c */*/*.c
+perl util/mkerr.pl -recurse -write
+
 cd ..
 
+
 # Delete old version.
-#rm -rf openssl/include
-#rm -rf openssl/src/crypto
+rm -rf openssl/include
+rm -rf openssl/src/crypto
 
 # Move new version into place.
-#mv openssl-$OPENSSL_VERSION/include openssl
-#mv openssl-$OPENSSL_VERSION/crypto openssl/src
+cp -r openssl-$OPENSSL_VERSION/include openssl
+cp -r openssl-$OPENSSL_VERSION/crypto openssl/src
+cp openssl-$OPENSSL_VERSION/e_os.h openssl
